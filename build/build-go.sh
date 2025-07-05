@@ -36,13 +36,13 @@ for platform in "$@"; do
                     output_file_name="${lib_name}.lib"
                 fi
 
-                if [ $arch == "386" ]; then
-                    export CC=$LLVM_MINGW_ROOT/bin/i686-w64-mingw32-gcc
-                elif [ $arch == "amd64" ]; then
-                    export CC=$LLVM_MINGW_ROOT/bin/x86_64-w64-mingw32-gcc
-                elif [ $arch == "arm64" ]; then
-                    export CC=$LLVM_MINGW_ROOT/bin/aarch64-w64-mingw32-gcc
-                fi
+                # if [ $arch == "386" ]; then
+                #     export CC=$LLVM_MINGW_ROOT/bin/i686-w64-mingw32-gcc
+                # elif [ $arch == "amd64" ]; then
+                #     export CC=$LLVM_MINGW_ROOT/bin/x86_64-w64-mingw32-gcc
+                # elif [ $arch == "arm64" ]; then
+                #     export CC=$LLVM_MINGW_ROOT/bin/aarch64-w64-mingw32-gcc
+                # fi
                 ;;
             linux)
                 if [ "$build_mode" == "c-shared" ]; then
@@ -51,13 +51,13 @@ for platform in "$@"; do
                     output_file_name="lib${lib_name}.a"
                 fi
 
-                if [ $arch == "386" ]; then
-                    export CC=i686-linux-gnu-gcc
-                elif [ $arch == "amd64" ]; then
-                    export CC=x86_64-linux-gnu-gcc
-                elif [ $arch == "arm64" ]; then
-                    export CC=aarch64-linux-gnu-gcc
-                fi
+                # if [ $arch == "386" ]; then
+                #     export CC=i686-linux-gnu-gcc
+                # elif [ $arch == "amd64" ]; then
+                #     export CC=x86_64-linux-gnu-gcc
+                # elif [ $arch == "arm64" ]; then
+                #     export CC=aarch64-linux-gnu-gcc
+                # fi
                 ;;
             android)
                 if [ "$build_mode" == "c-shared" ]; then
@@ -67,13 +67,13 @@ for platform in "$@"; do
                     continue
                 fi
 
-                if [ $arch == "386" ]; then
-                    export CC=$NDK_ROOT/toolchains/llvm/prebuilt/linux-x86_64/bin/i686-linux-android35-clang
-                elif [ $arch == "amd64" ]; then
-                    export CC=$NDK_ROOT/toolchains/llvm/prebuilt/linux-x86_64/bin/x86_64-linux-android35-clang
-                elif [ $arch == "arm64" ]; then
-                    export CC=$NDK_ROOT/toolchains/llvm/prebuilt/linux-x86_64/bin/aarch64-linux-android35-clang
-                fi
+                # if [ $arch == "386" ]; then
+                #     export CC=$NDK_ROOT/toolchains/llvm/prebuilt/linux-x86_64/bin/i686-linux-android35-clang
+                # elif [ $arch == "amd64" ]; then
+                #     export CC=$NDK_ROOT/toolchains/llvm/prebuilt/linux-x86_64/bin/x86_64-linux-android35-clang
+                # elif [ $arch == "arm64" ]; then
+                #     export CC=$NDK_ROOT/toolchains/llvm/prebuilt/linux-x86_64/bin/aarch64-linux-android35-clang
+                # fi
 
                 export CGO_LDFLAGS="-Wl,-soname,$output_file_name"
                 ;;
@@ -84,7 +84,7 @@ for platform in "$@"; do
                     output_file_name="${lib_name}.a"
                 fi
 
-                export CC=""
+                # export CC=""
                 ;;
             ios)
                 if [ "$build_mode" == "c-shared" ]; then
@@ -94,7 +94,7 @@ for platform in "$@"; do
                     output_file_name="${lib_name}.a"
                 fi
 
-                export CC=""
+                # export CC=""
         esac
 
         echo "Building for $os/$arch in $build_mode mode -> $output_dir_path/$output_file_name"
