@@ -43,6 +43,7 @@ for platform in "$@"; do
                 # elif [ $arch == "arm64" ]; then
                 #     export CC=$LLVM_MINGW_ROOT/bin/aarch64-w64-mingw32-gcc
                 # fi
+                export CC=gcc
                 ;;
             linux)
                 if [ "$build_mode" == "c-shared" ]; then
@@ -58,6 +59,7 @@ for platform in "$@"; do
                 # elif [ $arch == "arm64" ]; then
                 #     export CC=aarch64-linux-gnu-gcc
                 # fi
+                export CC=gcc
                 ;;
             android)
                 if [ "$build_mode" == "c-shared" ]; then
@@ -84,7 +86,7 @@ for platform in "$@"; do
                     output_file_name="${lib_name}.a"
                 fi
 
-                # export CC=""
+                export CC=gcc
                 ;;
             ios)
                 if [ "$build_mode" == "c-shared" ]; then
